@@ -1,0 +1,40 @@
+<template>
+    
+        <c-xlsx-main
+            header-list={headerList}
+            filename={filename}
+            worksheet-name-list={workSheetNameList}
+        ></c-xlsx-main>
+ 
+
+        <lightning-card title="Historique des prix" icon-name="action:preview">
+            <lightning-button icon-name="utility:download" 
+                                        slot="actions"
+                                        label="Export CSV" 
+                                        title="Export CSV"
+                                        data-name="csv"
+                                        id="csv"
+                                        onclick={exportFile} style="padding-right:10px;"  ></lightning-button>
+            
+            <lightning-button icon-name="utility:download" 
+                                        slot="actions"
+                                        label="Export Excel" 
+                                        title="Export Excel"
+                                        data-name="excel"
+                                        id="excel"
+                                        onclick={exportFile}  ></lightning-button>
+            <lightning-datatable
+                        key-field="id"
+                        data={data}
+                        columns={columns}
+                        hide-checkbox-column
+                        default-sort-direction={defaultSortDirection}
+                        sorted-direction={sortDirection}
+                        sorted-by={sortedBy}
+                        onsort={onHandleSort}
+                        >
+            </lightning-datatable>
+             
+        </lightning-card>    
+
+</template>
